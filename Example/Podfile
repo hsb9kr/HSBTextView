@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'HSBTextView_Example' do
+  pod 'HSBTextView', :path => '../'
+
+  target 'HSBTextView_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
