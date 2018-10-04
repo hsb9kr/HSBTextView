@@ -8,7 +8,7 @@
 
 import UIKit
 
-public protocol HSBTextViewDelegate {
+public protocol HashTagTextViewDelegate {
 	func detect(textView: HashTagTextView, hashTagInfo: HashTagInfo)
 	func didTouch(textView: HashTagTextView, hashTagInfo: HashTagInfo, URL: URL, range: NSRange)
 }
@@ -19,7 +19,7 @@ public class HashTagTextView: UITextView {
 	public var detectClosure: ((_ hashTagInfo: HashTagInfo) -> Void)?
 	public var prefixes = ["@", "#"]
 	public var tags = [HashTagInfo]()
-	public var textViewDelegate: HSBTextViewDelegate?
+	public var textViewDelegate: HashTagTextViewDelegate?
 	
 	override public var text: String! {
 		didSet {

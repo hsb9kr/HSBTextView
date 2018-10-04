@@ -13,6 +13,8 @@ class ViewController: UIViewController {
 
 	@IBOutlet var hashTagTextView: HashTagTextView!
 	
+	@IBOutlet var chipsTextView: ChipsTextView!
+	
 	override func viewDidLoad() {
         super.viewDidLoad()
 		
@@ -22,6 +24,12 @@ class ViewController: UIViewController {
 		
 		hashTagTextView.detectClosure = { hashTagInfo in
 			print(hashTagInfo.name)
+		}
+		
+		chipsTextView.detectsClosure = { chips in
+			for chip in chips {
+				print(chip.name)
+			}
 		}
     }
 
