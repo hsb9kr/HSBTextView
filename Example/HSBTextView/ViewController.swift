@@ -7,12 +7,22 @@
 //
 
 import UIKit
+import HSBTextView
 
 class ViewController: UIViewController {
 
-    override func viewDidLoad() {
+	@IBOutlet var hashTagTextView: HashTagTextView!
+	
+	override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+		
+		hashTagTextView.didTouchClosure = {(hashTagInfo, URL, range) in
+			print(hashTagInfo.name)
+		}
+		
+		hashTagTextView.detectClosure = { hashTagInfo in
+			print(hashTagInfo.name)
+		}
     }
 
     override func didReceiveMemoryWarning() {

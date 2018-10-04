@@ -36,6 +36,9 @@
                             <constraint firstItem="l0W-4m-9c9" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="clS-k6-elv"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="hashTagTextView" destination="l0W-4m-9c9" id="JZg-wh-b8y"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
