@@ -46,11 +46,10 @@ public class HashTagTextView: UITextView {
 			let startIndex = string.index(string.startIndex, offsetBy: result.range.location)
 			let endIndex = string.index(string.startIndex, offsetBy: result.range.location + result.range.length)
 			
-			var name = String(string[startIndex..<endIndex])
-			let (_, prefix) = self.hasPrefix(string: name)
+			let string = String(string[startIndex..<endIndex])
+			let prefix = hasPrefix(string: string).1
 			let range = NSRange(location: startIndex.encodedOffset, length: endIndex.encodedOffset - startIndex.encodedOffset)
-			name = name.replacingOccurrences(of: prefix ?? "", with: "")
-			return HashTagInfo(prefix: prefix ?? "", name: name, range: range)
+			return HashTagInfo(string: string, prefix: prefix ?? "", range: range)
 		}) else {
 			return attributeString
 		}
@@ -77,7 +76,7 @@ public class HashTagTextView: UITextView {
 			let endIndex = substring.index(substring.startIndex, offsetBy: result.range.location + result.range.length)
 			searchRange = NSRange(location: startIndex.encodedOffset, length: endIndex.encodedOffset - startIndex.encodedOffset)
 			return String(substring[startIndex..<endIndex])
-		}), var word = words.last else {
+		}), let word = words.last else {
 			return
 		}
 		
@@ -87,8 +86,7 @@ public class HashTagTextView: UITextView {
 			return
 		}
 		
-		word = word.replacingOccurrences(of: aPrefix, with: "")
-		let hashTagInfo = HashTagInfo(prefix: aPrefix, name: word, range: searchRange!)
+		let hashTagInfo = HashTagInfo(string: word, prefix: aPrefix, range: searchRange!)
 		detectClosure?(hashTagInfo)
 		textViewDelegate?.detect(textView: self, hashTagInfo: hashTagInfo)
 	}
@@ -124,21 +122,27 @@ extension HashTagTextView: UITextViewDelegate {
 	@available(iOS 10.0, *)
 	public func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
 		
-		guard let string = textView.text else {
-			return false
-		}
+		guard let string = textView.text else {return true}
 		
 		let startIndex = string.index(string.startIndex, offsetBy: characterRange.location)
 		let endIndex = string.index(startIndex, offsetBy: characterRange.length)
 		let substring = string[startIndex..<endIndex]
 		
-		for character in prefixes where substring.hasPrefix(character) {
-			
-			let word = substring.replacingOccurrences(of: character, with: "")
-			let hashTagInfo = HashTagInfo(prefix: character, name: word, range: characterRange)
-			textViewDelegate?.didTouch(textView: textView as! HashTagTextView, hashTagInfo: hashTagInfo, URL: URL, range: characterRange)
-			didTouchClosure?(hashTagInfo, URL, characterRange)
-		}
+		let (isPrefix, prefix) = hasPrefix(string: String(substring))
+		
+		guard isPrefix, let character = prefix else { return true }
+		
+		let hashTagInfo = HashTagInfo(string: String(substring), prefix: character, range: characterRange)
+		textViewDelegate?.didTouch(textView: textView as! HashTagTextView, hashTagInfo: hashTagInfo, URL: URL, range: characterRange)
+		didTouchClosure?(hashTagInfo, URL, characterRange)
+		
+//		for character in prefixes where substring.hasPrefix(character) {
+//
+//			let word = substring.replacingOccurrences(of: character, with: "")
+//			let hashTagInfo = HashTagInfo(prefix: character, name: word, range: characterRange)
+//			textViewDelegate?.didTouch(textView: textView as! HashTagTextView, hashTagInfo: hashTagInfo, URL: URL, range: characterRange)
+//			didTouchClosure?(hashTagInfo, URL, characterRange)
+//		}
 		
 		return false
 	}

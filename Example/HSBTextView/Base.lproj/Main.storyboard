@@ -21,11 +21,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="@tag @text #hi" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="l0W-4m-9c9" customClass="HashTagTextView" customModule="HSBTextView">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="@tag @text #hi https://www.youtube.com" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="l0W-4m-9c9" customClass="HashTagTextView" customModule="HSBTextView">
                                 <rect key="frame" x="0.0" y="20" width="375" height="33"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" bouncesZoom="NO" text="Hello, World" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="RBK-k4-NqD" customClass="ChipsTextView" customModule="HSBTextView">
                                 <rect key="frame" x="0.0" y="85" width="375" height="33"/>
@@ -33,13 +34,23 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2WD-aB-YPs">
+                                <rect key="frame" x="152.5" y="126" width="70" height="30"/>
+                                <state key="normal" title="Edit Mode"/>
+                                <connections>
+                                    <action selector="didTouchUpInsideButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="cXk-ld-apt"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="l0W-4m-9c9" secondAttribute="trailing" id="1hb-Kw-nlh"/>
                             <constraint firstItem="l0W-4m-9c9" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="EWo-kU-pRT"/>
                             <constraint firstAttribute="trailing" secondItem="RBK-k4-NqD" secondAttribute="trailing" id="KNI-3j-aNC"/>
+                            <constraint firstItem="2WD-aB-YPs" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="NbN-jJ-aWH"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" relation="greaterThanOrEqual" secondItem="2WD-aB-YPs" secondAttribute="bottom" constant="8" id="b5o-sz-g79"/>
                             <constraint firstItem="l0W-4m-9c9" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="clS-k6-elv"/>
+                            <constraint firstItem="2WD-aB-YPs" firstAttribute="top" secondItem="RBK-k4-NqD" secondAttribute="bottom" constant="8" id="dMP-AM-Gwr"/>
                             <constraint firstItem="RBK-k4-NqD" firstAttribute="top" secondItem="l0W-4m-9c9" secondAttribute="bottom" constant="32" id="qba-vC-X6k"/>
                             <constraint firstItem="RBK-k4-NqD" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="wCv-8a-a93"/>
                         </constraints>

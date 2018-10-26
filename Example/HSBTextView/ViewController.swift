@@ -12,18 +12,17 @@ import HSBTextView
 class ViewController: UIViewController {
 
 	@IBOutlet var hashTagTextView: HashTagTextView!
-	
 	@IBOutlet var chipsTextView: ChipsTextView!
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
 		
 		hashTagTextView.didTouchClosure = {(hashTagInfo, URL, range) in
-			print(hashTagInfo.name)
+			print(hashTagInfo)
 		}
 		
 		hashTagTextView.detectClosure = { hashTagInfo in
-			print(hashTagInfo.name)
+			print(hashTagInfo)
 		}
 		
 		chipsTextView.detectsClosure = { chips in
@@ -37,6 +36,16 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+	@IBAction func didTouchUpInsideButton(_ sender: UIButton) {
+		
+		let isEditable = !hashTagTextView.isEditable
+		
+		hashTagTextView.isEditable = isEditable
+		chipsTextView.isEditable = isEditable
+		
+		sender.setTitle(isEditable ? "Edit Mode" : "Read Mode", for: .normal)
+		
+	}
+	
 }
 
