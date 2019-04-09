@@ -8,9 +8,9 @@
 
 Pod::Spec.new do |s|
 s.name             = 'HSBTextView'
-s.version          = '0.1.5'
+s.version          = '0.1.6'
 s.summary          = 'Hash Tag TextView'
-s.swift_version    = '4.2'
+s.swift_version    = '5.0'
 s.description      = <<-DESC
 Hash Tag TextView.
 DESC

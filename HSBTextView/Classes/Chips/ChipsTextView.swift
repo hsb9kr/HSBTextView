@@ -42,7 +42,7 @@ public class ChipsTextView: UITextView {
 			let endIndex = string.index(string.startIndex, offsetBy: result.range.location + result.range.length)
 			
 			let name = String(string[startIndex..<endIndex])
-			let range = NSRange(location: startIndex.encodedOffset, length: endIndex.encodedOffset - startIndex.encodedOffset)
+			let range = NSRange(location: startIndex.utf16Offset(in: string), length: endIndex.utf16Offset(in: string) - startIndex.utf16Offset(in: string))
 			
 			return Chip(name: name, range: range)
 		}) else {
@@ -69,7 +69,7 @@ public class ChipsTextView: UITextView {
 		guard let words = regex?.matches(in: String(substring), options: [], range: NSRange(location: 0, length: substring.count)).map ({ (result) -> String in
 			let startIndex = substring.index(substring.startIndex, offsetBy: result.range.location)
 			let endIndex = substring.index(substring.startIndex, offsetBy: result.range.location + result.range.length)
-			searchRange = NSRange(location: startIndex.encodedOffset, length: endIndex.encodedOffset - startIndex.encodedOffset)
+			searchRange = NSRange(location: startIndex.utf16Offset(in: string), length: endIndex.utf16Offset(in: string) - startIndex.utf16Offset(in: string))
 			return String(substring[startIndex..<endIndex])
 		}), let word = words.last else {
 			return
