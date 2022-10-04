@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
 s.name             = 'HSBTextView'
-s.version          = '0.1.6'
+s.version          = '0.1.7'
 s.summary          = 'Hash Tag TextView'
 s.swift_version    = '5.0'
 s.description      = <<-DESC
@@ -20,7 +20,7 @@ s.license          = { :type => 'MIT', :file => 'LICENSE' }
 s.author           = { 'Red' => 'hsb9kr@gmail.com' }
 s.source           = { :git => 'https://github.com/hsb9kr/HSBTextView.git', :tag => s.version.to_s }
 s.requires_arc          = true
-s.ios.deployment_target = '8.0'
+s.ios.deployment_target = '9.0'
 
 s.source_files = 'HSBTextView/Classes/**/*.swift'
 s.frameworks = 'UIKit'

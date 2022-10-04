@@ -46,10 +46,10 @@ public class HashTagTextView: UITextView {
 			let startIndex = string.index(string.startIndex, offsetBy: result.range.location)
 			let endIndex = string.index(string.startIndex, offsetBy: result.range.location + result.range.length)
 			
-			let string = String(string[startIndex..<endIndex])
-			let prefix = hasPrefix(string: string).1
-			
+			let subString = String(string[startIndex..<endIndex])
+			let prefix = hasPrefix(string: subString).1
 			let range = NSRange(location: startIndex.utf16Offset(in: string), length: endIndex.utf16Offset(in: string) - startIndex.utf16Offset(in: string))
+			
 			return HashTagInfo(string: string, prefix: prefix ?? "", range: range)
 		}) else {
 			return attributeString

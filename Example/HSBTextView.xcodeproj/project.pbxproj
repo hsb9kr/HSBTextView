@@ -269,7 +269,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-HSBTextView_Example/Pods-HSBTextView_Example-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-HSBTextView_Example/Pods-HSBTextView_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/HSBTextView/HSBTextView.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -278,7 +278,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HSBTextView_Example/Pods-HSBTextView_Example-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HSBTextView_Example/Pods-HSBTextView_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		4D431D7902E82180981423B4 /* [CP] Check Pods Manifest.lock */ = {
